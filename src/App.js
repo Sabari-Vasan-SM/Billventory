@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Products from './components/Products';
 import Billing from './components/Billing';
 import Reports from './components/Reports';
+import OnlineOrders from './components/OnlineOrders';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route index element={<Products />} />
             <Route path="billing" element={<Billing />} />
             <Route path="reports" element={<Reports />} />
+            <Route path="online-orders" element={<OnlineOrders />} />
           </Route>
         </Routes>
       </div>
