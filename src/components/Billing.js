@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../supabaseClient';
 import { QRCodeSVG as QRCode } from 'qrcode.react';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { colors, spacing, borderRadius, shadows, typography } from '../styles/designSystem';
 
 const Billing = () => {
   const [products, setProducts] = useState([]);
@@ -277,43 +278,74 @@ const Billing = () => {
 
   return (
     <div>
-      <h1 style={{
-        fontSize: '1.5rem',
-        fontWeight: '600',
-        color: '#2d3748',
-        marginBottom: '1.5rem'
-      }}>
-        Billing System
-      </h1>
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        style={{
+          fontSize: typography.fontSize['3xl'],
+          fontWeight: typography.fontWeight.bold,
+          color: colors.primary,
+          marginBottom: spacing['2xl'],
+          fontFamily: typography.fontFamily,
+          padding: 0
+        }}
+      >
+        💳 Billing System
+      </motion.h1>
       
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: spacing.lg }}>
         {/* Product Selection */}
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '0.5rem',
-          padding: '1.5rem',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
-        }}>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          style={{
+            backgroundColor: colors.white,
+            borderRadius: borderRadius.xl,
+            padding: spacing.xl,
+            boxShadow: shadows.lg,
+            border: `1px solid ${colors.gray200}`
+          }}
+        >
           <h2 style={{
-            fontSize: '1.25rem',
-            fontWeight: '600',
-            marginBottom: '1rem',
-            color: '#4a5568'
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: typography.fontWeight.bold,
+            marginBottom: spacing.md,
+            color: colors.gray900,
+            fontFamily: typography.fontFamily,
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.xs
           }}>
-            Products
+            <span style={{
+              display: 'inline-block',
+              width: '4px',
+              height: '24px',
+              backgroundColor: colors.primary,
+              borderRadius: borderRadius.sm
+            }}></span>
+            🛍️ Products
           </h2>
           
-          <input
+          <motion.input
+            whileFocus={{
+              boxShadow: `0 0 0 3px ${colors.primary}20`,
+              borderColor: colors.primary
+            }}
             type="text"
-            placeholder="Search products..."
+            placeholder="🔍 Search products..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               width: '100%',
-              padding: '0.5rem',
-              border: '1px solid #e2e8f0',
-              borderRadius: '0.25rem',
-              marginBottom: '1rem'
+              padding: `${spacing.sm} ${spacing.md}`,
+              border: `1px solid ${colors.gray200}`,
+              borderRadius: borderRadius.md,
+              marginBottom: spacing.md,
+              fontSize: typography.fontSize.sm,
+              fontFamily: typography.fontFamily,
+              backgroundColor: colors.gray50,
+              transition: 'all 0.2s'
             }}
           />
           
@@ -383,24 +415,41 @@ const Billing = () => {
               })}
             </div>
           )}
-        </div>
+        </motion.div>
         
         {/* Cart and Customer Info */}
-        <div style={{
-          backgroundColor: 'white',
-          borderRadius: '0.5rem',
-          padding: '1.5rem',
-          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
-          display: 'flex',
-          flexDirection: 'column'
-        }}>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          style={{
+            backgroundColor: colors.white,
+            borderRadius: borderRadius.xl,
+            padding: spacing.xl,
+            boxShadow: shadows.lg,
+            border: `1px solid ${colors.gray200}`,
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+        >
           <h2 style={{
-            fontSize: '1.25rem',
-            fontWeight: '600',
-            marginBottom: '1rem',
-            color: '#4a5568'
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: typography.fontWeight.bold,
+            marginBottom: spacing.md,
+            color: colors.gray900,
+            fontFamily: typography.fontFamily,
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.xs
           }}>
-            Cart
+            <span style={{
+              display: 'inline-block',
+              width: '4px',
+              height: '24px',
+              backgroundColor: colors.primary,
+              borderRadius: borderRadius.sm
+            }}></span>
+            🛒 Cart
           </h2>
           
           <div style={{ marginBottom: '1.5rem' }}>
@@ -611,7 +660,7 @@ const Billing = () => {
               </motion.button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Payment Modal */}

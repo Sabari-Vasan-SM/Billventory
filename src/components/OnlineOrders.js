@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../supabaseClient';
+import { colors, spacing, borderRadius, shadows, typography } from '../styles/designSystem';
 
 const OnlineOrders = () => {
   const [orders, setOrders] = useState([]);
