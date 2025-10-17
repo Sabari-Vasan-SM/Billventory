@@ -3,7 +3,6 @@
 
 A modern, minimal, and responsive inventory and billing management web app for retail stores, built with React, Supabase, and a custom design system.
 
-![Billventory Dashboard Screenshot](public/logo512.png)
 
 ## Features
 
@@ -83,16 +82,5 @@ Billventory/
 - **Shop Details:**
   - Update shop name, address, phone, GSTIN, and UPI ID in `Billing.js`.
 
-## Screenshots
-
-| Login | Dashboard | Products | Billing | Reports |
-|-------|-----------|----------|---------|---------|
-| ![](public/logo192.png) | ![](public/logo512.png) | ![](public/favicon.png) | ![](public/favicon1.ico) | ![](public/favicon-old.ico) |
-
-## License
-
-MIT © Sabari Vasan S M
-
----
 
 > Modern UI, smooth animations, and robust inventory management for your retail business.
