@@ -1,74 +1,98 @@
-# Getting Started with Create React App
 
-<<<<<<< Updated upstream
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-=======
 # Billventory 
->>>>>>> Stashed changes
 
-## Available Scripts
+A modern, minimal, and responsive inventory and billing management web app for retail stores, built with React, Supabase, and a custom design system.
 
-In the project directory, you can run:
+![Billventory Dashboard Screenshot](public/logo512.png)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Authentication**: Secure login with session management
+- **Dashboard**: Modern navigation, animated transitions, and user profile
+- **Products**: Add, edit, delete, and search products with real-time inventory updates
+- **Billing**: Cart management, customer details, PDF/printable invoice, UPI QR code, and payment modal
+- **Reports**: Sales analytics, date range filters, statistics cards, and transaction history with modal details
+- **Online Orders**: Real-time order management with delete and status updates
+- **Loading Screen**: Animated typewriter loader for a professional first impression
+- **Design System**: Consistent colors, typography, spacing, border radius, and shadows across all components
+- **Responsive**: Fully mobile-friendly and desktop-optimized
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend**: React 18+, Framer Motion, styled-components
+- **Backend**: Supabase (PostgreSQL, Auth, Realtime)
+- **PDF/Print**: jsPDF, jspdf-autotable, react-to-print
+- **QR Code**: qrcode.react
+- **Styling**: Custom design system (see `src/styles/designSystem.js`)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Folder Structure
 
-### `npm run build`
+```
+Billventory/
+├── public/
+│   ├── favicon.png
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── App.js
+│   ├── components/
+│   │   ├── Billing.js
+│   │   ├── Dashboard.js
+│   │   ├── Loader.js
+│   │   ├── Login.js
+│   │   ├── OnlineOrders.js
+│   │   ├── Products.js
+│   │   ├── ProtectedRoute.js
+│   │   └── Reports.js
+│   ├── contexts/
+│   │   └── AuthContext.js
+│   ├── styles/
+│   │   ├── designSystem.js
+│   │   └── Billing.css
+│   └── ...
+├── package.json
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository:**
+	```sh
+	git clone https://github.com/Sabari-Vasan-SM/Billventory.git
+	cd Billventory
+	```
+2. **Install dependencies:**
+	```sh
+	npm install
+	```
+3. **Configure Supabase:**
+	- Create a project at [supabase.com](https://supabase.com/)
+	- Copy your Supabase URL and anon/public key
+	- Update `src/supabaseClient.js` with your credentials
+4. **Start the development server:**
+	```sh
+	npm start
+	```
+5. **Open in browser:**
+	- Visit [http://localhost:3000](http://localhost:3000)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Customization
 
-### `npm run eject`
+- **Design System:**
+  - Edit `src/styles/designSystem.js` to change colors, spacing, typography, and more.
+- **Shop Details:**
+  - Update shop name, address, phone, GSTIN, and UPI ID in `Billing.js`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Login | Dashboard | Products | Billing | Reports |
+|-------|-----------|----------|---------|---------|
+| ![](public/logo192.png) | ![](public/logo512.png) | ![](public/favicon.png) | ![](public/favicon1.ico) | ![](public/favicon-old.ico) |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+MIT © Sabari Vasan S M
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> Modern UI, smooth animations, and robust inventory management for your retail business.
