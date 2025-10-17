@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../supabaseClient';
+import { colors, spacing, borderRadius, shadows, typography } from '../styles/designSystem';
 
 const Reports = () => {
   const [transactions, setTransactions] = useState([]);
@@ -83,8 +84,9 @@ const Reports = () => {
     <div style={{ 
       maxWidth: '1400px', 
       margin: '0 auto', 
-      padding: '2rem',
-      minHeight: '100vh'
+      padding: 0,
+      minHeight: '100vh',
+      fontFamily: typography.fontFamily
     }}>
       {/* Header Section */}
       <motion.div
@@ -95,26 +97,24 @@ const Reports = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '2.5rem',
+          marginBottom: spacing['2xl'],
           flexWrap: 'wrap',
-          gap: '1.5rem'
+          gap: spacing.lg
         }}
       >
         <div>
           <h1 style={{
-            fontSize: '2.25rem',
-            fontWeight: '700',
-            color: '#1a365d',
-            marginBottom: '0.5rem',
-            background: 'linear-gradient(90deg, #4f46e5, #06b6d4)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
+            fontSize: typography.fontSize['3xl'],
+            fontWeight: typography.fontWeight.extrabold,
+            color: colors.primary,
+            marginBottom: spacing.sm,
+            letterSpacing: '-0.5px'
           }}>
-            Sales Analytics
+            📊 Sales Analytics
           </h1>
           <p style={{ 
-            color: '#64748b',
-            fontSize: '1rem',
+            color: colors.gray600,
+            fontSize: typography.fontSize.base,
             maxWidth: '600px'
           }}>
             Track and analyze your sales performance. Filter by date range to view specific periods.
@@ -128,65 +128,68 @@ const Reports = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
         style={{
-          backgroundColor: 'white',
-          borderRadius: '12px',
-          padding: '2rem',
-          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-          marginBottom: '2.5rem',
-          border: '1px solid #e2e8f0'
+          backgroundColor: colors.white,
+          borderRadius: borderRadius.xl,
+          padding: spacing.xl,
+          boxShadow: shadows.lg,
+          marginBottom: spacing['2xl'],
+          border: `1px solid ${colors.gray200}`
         }}
       >
         <h2 style={{
-          fontSize: '1.5rem',
-          fontWeight: '600',
-          color: '#1e293b',
-          marginBottom: '1.5rem',
+          fontSize: typography.fontSize['2xl'],
+          fontWeight: typography.fontWeight.bold,
+          color: colors.gray900,
+          marginBottom: spacing.lg,
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem'
+          gap: spacing.sm,
+          fontFamily: typography.fontFamily
         }}>
           <span style={{
             display: 'inline-block',
-            width: '8px',
+            width: '4px',
             height: '24px',
-            backgroundColor: '#4f46e5',
-            borderRadius: '4px'
+            backgroundColor: colors.primary,
+            borderRadius: borderRadius.sm
           }}></span>
-          Date Range Filter
+          📅 Date Range Filter
         </h2>
         
         <div style={{ 
           display: 'flex', 
-          gap: '1.5rem',
+          gap: spacing.lg,
           flexWrap: 'wrap',
-          marginBottom: '1.5rem'
+          marginBottom: spacing.lg
         }}>
           <div style={{ flex: 1, minWidth: '200px' }}>
             <label style={{
               display: 'block',
-              fontSize: '0.875rem',
-              color: '#475569',
-              marginBottom: '0.5rem',
-              fontWeight: '500'
+              fontSize: typography.fontSize.sm,
+              color: colors.gray600,
+              marginBottom: spacing.xs,
+              fontWeight: typography.fontWeight.medium,
+              fontFamily: typography.fontFamily
             }}>
               Start Date
             </label>
             <motion.input
               whileFocus={{ 
-                boxShadow: '0 0 0 2px rgba(79, 70, 229, 0.3)',
-                borderColor: '#4f46e5'
+                boxShadow: `0 0 0 3px ${colors.primary}20`,
+                borderColor: colors.primary
               }}
               type="date"
               value={dateRange.start}
               onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
               style={{
                 width: '100%',
-                padding: '0.75rem 1rem',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
+                padding: `${spacing.sm} ${spacing.md}`,
+                border: `1px solid ${colors.gray200}`,
+                borderRadius: borderRadius.md,
+                fontSize: typography.fontSize.sm,
                 transition: 'all 0.2s',
-                backgroundColor: '#f8fafc'
+                backgroundColor: colors.gray50,
+                fontFamily: typography.fontFamily
               }}
             />
           </div>
@@ -194,29 +197,31 @@ const Reports = () => {
           <div style={{ flex: 1, minWidth: '200px' }}>
             <label style={{
               display: 'block',
-              fontSize: '0.875rem',
-              color: '#475569',
-              marginBottom: '0.5rem',
-              fontWeight: '500'
+              fontSize: typography.fontSize.sm,
+              color: colors.gray600,
+              marginBottom: spacing.xs,
+              fontWeight: typography.fontWeight.medium,
+              fontFamily: typography.fontFamily
             }}>
               End Date
             </label>
             <motion.input
               whileFocus={{ 
-                boxShadow: '0 0 0 2px rgba(79, 70, 229, 0.3)',
-                borderColor: '#4f46e5'
+                boxShadow: `0 0 0 3px ${colors.primary}20`,
+                borderColor: colors.primary
               }}
               type="date"
               value={dateRange.end}
               onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
               style={{
                 width: '100%',
-                padding: '0.75rem 1rem',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
+                padding: `${spacing.sm} ${spacing.md}`,
+                border: `1px solid ${colors.gray200}`,
+                borderRadius: borderRadius.md,
+                fontSize: typography.fontSize.sm,
                 transition: 'all 0.2s',
-                backgroundColor: '#f8fafc'
+                backgroundColor: colors.gray50,
+                fontFamily: typography.fontFamily
               }}
             />
           </div>
@@ -224,21 +229,22 @@ const Reports = () => {
         
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <motion.button
-            whileHover={{ scale: 1.03, boxShadow: '0 4px 6px -1px rgba(79, 70, 229, 0.3)' }}
+            whileHover={{ scale: 1.03, boxShadow: shadows.lg }}
             whileTap={{ scale: 0.98 }}
             onClick={fetchTransactions}
             style={{
-              backgroundColor: '#4f46e5',
-              color: 'white',
+              backgroundColor: colors.primary,
+              color: colors.white,
               border: 'none',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '8px',
+              padding: `${spacing.sm} ${spacing.xl}`,
+              borderRadius: borderRadius.md,
               cursor: 'pointer',
-              fontWeight: '600',
-              fontSize: '0.875rem',
+              fontFamily: typography.fontFamily,
+              fontWeight: typography.fontWeight.semibold,
+              fontSize: typography.fontSize.sm,
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem'
+              gap: spacing.xs
             }}
           >
             <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -257,157 +263,166 @@ const Reports = () => {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '1.5rem',
-          marginBottom: '2.5rem'
+          gap: spacing.lg,
+          marginBottom: spacing['2xl']
         }}
       >
         <motion.div
-          whileHover={{ y: -5 }}
+          whileHover={{ y: -5, boxShadow: shadows.xl }}
           style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-            border: '1px solid #e2e8f0'
+            backgroundColor: colors.white,
+            borderRadius: borderRadius.xl,
+            padding: spacing.lg,
+            boxShadow: shadows.md,
+            border: `1px solid ${colors.gray200}`
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: spacing.md, marginBottom: spacing.md }}>
             <div style={{
               width: '48px',
               height: '48px',
-              backgroundColor: '#eef2ff',
-              borderRadius: '50%',
+              backgroundColor: `${colors.primary}15`,
+              borderRadius: borderRadius.full,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              fontSize: typography.fontSize['2xl']
             }}>
-              <svg style={{ width: '24px', height: '24px', color: '#4f46e5' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              💰
             </div>
             <div>
               <h3 style={{
-                fontSize: '0.875rem',
-                color: '#64748b',
-                marginBottom: '0.25rem'
+                fontSize: typography.fontSize.sm,
+                color: colors.gray600,
+                marginBottom: spacing.xs,
+                fontFamily: typography.fontFamily,
+                fontWeight: typography.fontWeight.medium
               }}>
                 Total Sales
               </h3>
               <p style={{
-                fontSize: '1.75rem',
-                fontWeight: '700',
-                color: '#1e293b'
+                fontSize: typography.fontSize['3xl'],
+                fontWeight: typography.fontWeight.bold,
+                color: colors.gray900,
+                fontFamily: typography.fontFamily
               }}>
                 ₹{calculateTotalSales().toFixed(2)}
               </p>
             </div>
           </div>
           <p style={{ 
-            color: '#94a3b8',
-            fontSize: '0.75rem',
-            marginTop: '0.5rem'
+            color: colors.gray500,
+            fontSize: typography.fontSize.xs,
+            marginTop: spacing.xs,
+            fontFamily: typography.fontFamily
           }}>
-            {dateRange.start} to {dateRange.end}
+            📅 {dateRange.start} to {dateRange.end}
           </p>
         </motion.div>
         
         <motion.div
-          whileHover={{ y: -5 }}
+          whileHover={{ y: -5, boxShadow: shadows.xl }}
           style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-            border: '1px solid #e2e8f0'
+            backgroundColor: colors.white,
+            borderRadius: borderRadius.xl,
+            padding: spacing.lg,
+            boxShadow: shadows.md,
+            border: `1px solid ${colors.gray200}`
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: spacing.md, marginBottom: spacing.md }}>
             <div style={{
               width: '48px',
               height: '48px',
-              backgroundColor: '#ecfdf5',
-              borderRadius: '50%',
+              backgroundColor: `${colors.success}15`,
+              borderRadius: borderRadius.full,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              fontSize: typography.fontSize['2xl']
             }}>
-              <svg style={{ width: '24px', height: '24px', color: '#10b981' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              ✅
             </div>
             <div>
               <h3 style={{
-                fontSize: '0.875rem',
-                color: '#64748b',
-                marginBottom: '0.25rem'
+                fontSize: typography.fontSize.sm,
+                color: colors.gray600,
+                marginBottom: spacing.xs,
+                fontFamily: typography.fontFamily,
+                fontWeight: typography.fontWeight.medium
               }}>
                 Transactions
               </h3>
               <p style={{
-                fontSize: '1.75rem',
-                fontWeight: '700',
-                color: '#1e293b'
+                fontSize: typography.fontSize['3xl'],
+                fontWeight: typography.fontWeight.bold,
+                color: colors.gray900,
+                fontFamily: typography.fontFamily
               }}>
                 {transactions.length}
               </p>
             </div>
           </div>
           <p style={{ 
-            color: '#94a3b8',
-            fontSize: '0.75rem',
-            marginTop: '0.5rem'
+            color: colors.gray500,
+            fontSize: typography.fontSize.xs,
+            marginTop: spacing.xs,
+            fontFamily: typography.fontFamily
           }}>
-            {dateRange.start} to {dateRange.end}
+            📅 {dateRange.start} to {dateRange.end}
           </p>
         </motion.div>
         
         <motion.div
-          whileHover={{ y: -5 }}
+          whileHover={{ y: -5, boxShadow: shadows.xl }}
           style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-            border: '1px solid #e2e8f0'
+            backgroundColor: colors.white,
+            borderRadius: borderRadius.xl,
+            padding: spacing.lg,
+            boxShadow: shadows.md,
+            border: `1px solid ${colors.gray200}`
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: spacing.md, marginBottom: spacing.md }}>
             <div style={{
               width: '48px',
               height: '48px',
-              backgroundColor: '#f0f9ff',
-              borderRadius: '50%',
+              backgroundColor: `${colors.accent}15`,
+              borderRadius: borderRadius.full,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              fontSize: typography.fontSize['2xl']
             }}>
-              <svg style={{ width: '24px', height: '24px', color: '#0ea5e9' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
+              📦
             </div>
             <div>
               <h3 style={{
-                fontSize: '0.875rem',
-                color: '#64748b',
-                marginBottom: '0.25rem'
+                fontSize: typography.fontSize.sm,
+                color: colors.gray600,
+                marginBottom: spacing.xs,
+                fontFamily: typography.fontFamily,
+                fontWeight: typography.fontWeight.medium
               }}>
                 Items Sold
               </h3>
               <p style={{
-                fontSize: '1.75rem',
-                fontWeight: '700',
-                color: '#1e293b'
+                fontSize: typography.fontSize['3xl'],
+                fontWeight: typography.fontWeight.bold,
+                color: colors.gray900,
+                fontFamily: typography.fontFamily
               }}>
                 {calculateTotalItemsSold()}
               </p>
             </div>
           </div>
           <p style={{ 
-            color: '#94a3b8',
-            fontSize: '0.75rem',
-            marginTop: '0.5rem'
+            color: colors.gray500,
+            fontSize: typography.fontSize.xs,
+            marginTop: spacing.xs,
+            fontFamily: typography.fontFamily
           }}>
-            {dateRange.start} to {dateRange.end}
+            📅 {dateRange.start} to {dateRange.end}
           </p>
         </motion.div>
       </motion.div>
@@ -418,41 +433,43 @@ const Reports = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         style={{
-          backgroundColor: 'white',
-          borderRadius: '12px',
-          padding: '2rem',
-          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-          border: '1px solid #e2e8f0'
+          backgroundColor: colors.white,
+          borderRadius: borderRadius.xl,
+          padding: spacing.xl,
+          boxShadow: shadows.lg,
+          border: `1px solid ${colors.gray200}`
         }}
       >
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '1.5rem',
+          marginBottom: spacing.lg,
           flexWrap: 'wrap',
-          gap: '1rem'
+          gap: spacing.md
         }}>
           <h2 style={{
-            fontSize: '1.5rem',
-            fontWeight: '600',
-            color: '#1e293b',
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: typography.fontWeight.bold,
+            color: colors.gray900,
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem'
+            gap: spacing.sm,
+            fontFamily: typography.fontFamily
           }}>
             <span style={{
               display: 'inline-block',
-              width: '8px',
+              width: '4px',
               height: '24px',
-              backgroundColor: '#4f46e5',
-              borderRadius: '4px'
+              backgroundColor: colors.primary,
+              borderRadius: borderRadius.sm
             }}></span>
-            Transaction History
+            🧾 Transaction History
           </h2>
           <p style={{ 
-            color: '#64748b',
-            fontSize: '0.875rem'
+            color: colors.gray600,
+            fontSize: typography.fontSize.sm,
+            fontFamily: typography.fontFamily
           }}>
             Showing {transactions.length} {transactions.length === 1 ? 'transaction' : 'transactions'}
           </p>
@@ -465,7 +482,7 @@ const Reports = () => {
             style={{ 
               display: 'flex', 
               justifyContent: 'center', 
-              padding: '4rem'
+              padding: spacing['3xl']
             }}
           >
             <motion.div
@@ -480,9 +497,9 @@ const Reports = () => {
               style={{
                 width: '48px',
                 height: '48px',
-                border: '4px solid #e2e8f0',
-                borderTopColor: '#4f46e5',
-                borderRadius: '50%'
+                border: `4px solid ${colors.gray200}`,
+                borderTopColor: colors.primary,
+                borderRadius: borderRadius.full
               }}
             />
           </motion.div>
@@ -495,30 +512,30 @@ const Reports = () => {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '4rem',
+              padding: spacing['3xl'],
               textAlign: 'center'
             }}
           >
-            <svg style={{ 
-              width: '64px', 
-              height: '64px', 
-              color: '#e2e8f0', 
-              marginBottom: '1.5rem' 
-            }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            <h3 style={{ 
-              fontSize: '1.25rem',
-              fontWeight: '600',
-              color: '#1e293b',
-              marginBottom: '0.5rem'
+            <div style={{ 
+              fontSize: '64px',
+              marginBottom: spacing.lg
             }}>
-              No transactions found
+              📋
+            </div>
+            <h3 style={{ 
+              fontSize: typography.fontSize.xl,
+              fontWeight: typography.fontWeight.semibold,
+              color: colors.gray900,
+              fontFamily: typography.fontFamily,
+              marginBottom: spacing.md
+            }}>
+              No Transactions Found
             </h3>
             <p style={{ 
-              color: '#64748b', 
-              marginBottom: '1.5rem',
-              maxWidth: '400px'
+              color: colors.gray600,
+              fontSize: typography.fontSize.sm,
+              maxWidth: '400px',
+              fontFamily: typography.fontFamily
             }}>
               There are no transactions for the selected date range.
             </p>
@@ -527,7 +544,7 @@ const Reports = () => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: '1.5rem'
+            gap: spacing.lg
           }}>
             <AnimatePresence>
               {transactions.map((transaction) => (
@@ -538,13 +555,13 @@ const Reports = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ y: -5, boxShadow: shadows.xl }}
                   style={{
-                    backgroundColor: 'white',
-                    borderRadius: '12px',
-                    padding: '1.5rem',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    border: '1px solid #e2e8f0',
+                    backgroundColor: colors.white,
+                    borderRadius: borderRadius.xl,
+                    padding: spacing.lg,
+                    boxShadow: shadows.md,
+                    border: `1px solid ${colors.gray200}`,
                     display: 'flex',
                     flexDirection: 'column'
                   }}
@@ -553,91 +570,99 @@ const Reports = () => {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'flex-start',
-                    marginBottom: '1rem'
+                    marginBottom: spacing.md
                   }}>
                     <div>
                       <h3 style={{
-                        fontSize: '1rem',
-                        fontWeight: '600',
-                        color: '#1e293b',
-                        marginBottom: '0.25rem'
+                        fontSize: typography.fontSize.base,
+                        fontWeight: typography.fontWeight.semibold,
+                        color: colors.gray900,
+                        marginBottom: spacing.xs,
+                        fontFamily: typography.fontFamily
                       }}>
-                        Order #{transaction.id}
+                        🧾 Order #{transaction.id}
                       </h3>
                       <p style={{
-                        color: '#64748b',
-                        fontSize: '0.875rem'
+                        color: colors.gray600,
+                        fontSize: typography.fontSize.sm,
+                        fontFamily: typography.fontFamily
                       }}>
                         {formatDate(transaction.created_at)}
                       </p>
                     </div>
                     <span style={{
-                      backgroundColor: '#f1f5f9',
-                      color: '#475569',
-                      padding: '0.25rem 0.75rem',
-                      borderRadius: '9999px',
-                      fontSize: '0.75rem',
-                      fontWeight: '600'
+                      backgroundColor: colors.gray100,
+                      color: colors.gray700,
+                      padding: `${spacing.xs} ${spacing.sm}`,
+                      borderRadius: borderRadius.full,
+                      fontSize: typography.fontSize.xs,
+                      fontWeight: typography.fontWeight.semibold,
+                      fontFamily: typography.fontFamily
                     }}>
                       {transaction.items.length} {transaction.items.length === 1 ? 'item' : 'items'}
                     </span>
                   </div>
                   
                   <div style={{
-                    marginBottom: '1rem',
-                    paddingBottom: '1rem',
-                    borderBottom: '1px solid #f1f5f9'
+                    marginBottom: spacing.md,
+                    paddingBottom: spacing.md,
+                    borderBottom: `1px solid ${colors.gray200}`
                   }}>
                     <p style={{
-                      fontSize: '0.875rem',
-                      color: '#64748b',
-                      marginBottom: '0.5rem'
+                      fontSize: typography.fontSize.sm,
+                      color: colors.gray600,
+                      marginBottom: spacing.xs,
+                      fontFamily: typography.fontFamily
                     }}>
-                      Customer: <span style={{ color: '#1e293b', fontWeight: '500' }}>{transaction.customer_name}</span>
+                      👤 Customer: <span style={{ color: colors.gray900, fontWeight: typography.fontWeight.medium }}>{transaction.customer_name}</span>
                     </p>
                     <p style={{
-                      fontSize: '0.875rem',
-                      color: '#64748b',
-                      marginBottom: '0.5rem'
+                      fontSize: typography.fontSize.sm,
+                      color: colors.gray600,
+                      marginBottom: spacing.xs,
+                      fontFamily: typography.fontFamily
                     }}>
-                      Phone: <span style={{ color: '#1e293b', fontWeight: '500' }}>{transaction.customer_phone || 'N/A'}</span>
+                      📞 Phone: <span style={{ color: colors.gray900, fontWeight: typography.fontWeight.medium }}>{transaction.customer_phone || 'N/A'}</span>
                     </p>
                   </div>
                   
-                  <div style={{ marginBottom: '1rem' }}>
+                  <div style={{ marginBottom: spacing.md }}>
                     <p style={{
-                      fontSize: '0.875rem',
-                      color: '#64748b'
+                      fontSize: typography.fontSize.sm,
+                      color: colors.gray600,
+                      fontFamily: typography.fontFamily
                     }}>
                       Total Amount
                     </p>
                     <p style={{
-                      fontSize: '1.25rem',
-                      fontWeight: '700',
-                      color: '#1e293b'
+                      fontSize: typography.fontSize.xl,
+                      fontWeight: typography.fontWeight.bold,
+                      color: colors.gray900,
+                      fontFamily: typography.fontFamily
                     }}>
                       ₹{transaction.total_amount.toFixed(2)}
                     </p>
                   </div>
 
                   <motion.button
-                    whileHover={{ scale: 1.03, boxShadow: '0 4px 6px -1px rgba(79, 70, 229, 0.3)' }}
+                    whileHover={{ scale: 1.03, boxShadow: shadows.md }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => handleViewDetails(transaction)}
                     style={{
-                      backgroundColor: '#4f46e5',
-                      color: 'white',
+                      backgroundColor: colors.primary,
+                      color: colors.white,
                       border: 'none',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '8px',
+                      padding: `${spacing.xs} ${spacing.md}`,
+                      borderRadius: borderRadius.md,
                       cursor: 'pointer',
-                      fontWeight: '500',
-                      fontSize: '0.875rem',
+                      fontWeight: typography.fontWeight.medium,
+                      fontSize: typography.fontSize.sm,
                       alignSelf: 'flex-start',
-                      marginTop: 'auto'
+                      marginTop: 'auto',
+                      fontFamily: typography.fontFamily
                     }}
                   >
-                    View Details
+                    👁️ View Details
                   </motion.button>
                 </motion.div>
               ))}
@@ -659,12 +684,12 @@ const Reports = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 1000,
-              padding: '1rem'
+              padding: spacing.md
             }}
             onClick={closeModal}
           >
@@ -673,10 +698,10 @@ const Reports = () => {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               style={{
-                backgroundColor: 'white',
-                borderRadius: '12px',
-                padding: '2rem',
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+                backgroundColor: colors.white,
+                borderRadius: borderRadius.xl,
+                padding: spacing.xl,
+                boxShadow: shadows['2xl'],
                 maxWidth: '600px',
                 width: '100%',
                 maxHeight: '90vh',
@@ -688,14 +713,15 @@ const Reports = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                marginBottom: '1.5rem'
+                marginBottom: spacing.lg
               }}>
                 <h2 style={{
-                  fontSize: '1.5rem',
-                  fontWeight: '600',
-                  color: '#1e293b'
+                  fontSize: typography.fontSize['2xl'],
+                  fontWeight: typography.fontWeight.bold,
+                  color: colors.gray900,
+                  fontFamily: typography.fontFamily
                 }}>
-                  Order Details
+                  📋 Order Details
                 </h2>
                 <button
                   onClick={closeModal}
@@ -703,77 +729,77 @@ const Reports = () => {
                     backgroundColor: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    fontSize: '1.25rem',
-                    color: '#64748b'
+                    fontSize: typography.fontSize.xl,
+                    color: colors.gray600,
+                    fontFamily: typography.fontFamily
                   }}
                 >
-                  &times;
+                  ✖️
                 </button>
               </div>
 
-              <div style={{ marginBottom: '2rem' }}>
+              <div style={{ marginBottom: spacing.xl }}>
                 <h3 style={{
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  color: '#1e293b',
-                  marginBottom: '1rem',
+                  fontSize: typography.fontSize.base,
+                  fontWeight: typography.fontWeight.semibold,
+                  color: colors.gray900,
+                  marginBottom: spacing.md,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem'
+                  gap: spacing.xs,
+                  fontFamily: typography.fontFamily
                 }}>
-                  <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  Customer Information
+                  👤 Customer Information
                 </h3>
                 <div style={{
-                  backgroundColor: '#f8fafc',
-                  borderRadius: '8px',
-                  padding: '1rem',
-                  marginBottom: '1rem'
+                  backgroundColor: colors.gray50,
+                  borderRadius: borderRadius.md,
+                  padding: spacing.md,
+                  marginBottom: spacing.md
                 }}>
                   <p style={{
-                    fontSize: '0.875rem',
-                    color: '#64748b',
-                    marginBottom: '0.5rem'
+                    fontSize: typography.fontSize.sm,
+                    color: colors.gray600,
+                    marginBottom: spacing.xs,
+                    fontFamily: typography.fontFamily
                   }}>
-                    <span style={{ fontWeight: '500', color: '#1e293b' }}>Name:</span> {selectedTransaction.customer_name}
+                    <span style={{ fontWeight: typography.fontWeight.medium, color: colors.gray900 }}>Name:</span> {selectedTransaction.customer_name}
                   </p>
                   <p style={{
-                    fontSize: '0.875rem',
-                    color: '#64748b',
-                    marginBottom: '0.5rem'
+                    fontSize: typography.fontSize.sm,
+                    color: colors.gray600,
+                    marginBottom: spacing.xs,
+                    fontFamily: typography.fontFamily
                   }}>
-                    <span style={{ fontWeight: '500', color: '#1e293b' }}>Phone:</span> {selectedTransaction.customer_phone || 'N/A'}
+                    <span style={{ fontWeight: typography.fontWeight.medium, color: colors.gray900 }}>Phone:</span> {selectedTransaction.customer_phone || 'N/A'}
                   </p>
                   <p style={{
-                    fontSize: '0.875rem',
-                    color: '#64748b'
+                    fontSize: typography.fontSize.sm,
+                    color: colors.gray600,
+                    fontFamily: typography.fontFamily
                   }}>
-                    <span style={{ fontWeight: '500', color: '#1e293b' }}>Date:</span> {formatDate(selectedTransaction.created_at)}
+                    <span style={{ fontWeight: typography.fontWeight.medium, color: colors.gray900 }}>Date:</span> {formatDate(selectedTransaction.created_at)}
                   </p>
                 </div>
               </div>
 
-              <div style={{ marginBottom: '2rem' }}>
+              <div style={{ marginBottom: spacing.xl }}>
                 <h3 style={{
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  color: '#1e293b',
-                  marginBottom: '1rem',
+                  fontSize: typography.fontSize.base,
+                  fontWeight: typography.fontWeight.semibold,
+                  color: colors.gray900,
+                  marginBottom: spacing.md,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem'
+                  gap: spacing.xs,
+                  fontFamily: typography.fontFamily
                 }}>
-                  <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
-                  Purchased Items
+                  🛒 Purchased Items
                 </h3>
                 <div style={{
-                  backgroundColor: '#f8fafc',
-                  borderRadius: '8px',
-                  padding: '1rem'
+                  backgroundColor: colors.gray50,
+                  borderRadius: borderRadius.md,
+                  padding: spacing.md
                 }}>
                   {selectedTransaction.items.map((item, index) => {
                     const product = getProductDetails(item.product_id);
@@ -782,29 +808,32 @@ const Reports = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        padding: '0.5rem 0',
-                        borderBottom: index < selectedTransaction.items.length - 1 ? '1px solid #e2e8f0' : 'none'
+                        padding: `${spacing.xs} 0`,
+                        borderBottom: index < selectedTransaction.items.length - 1 ? `1px solid ${colors.gray200}` : 'none'
                       }}>
                         <div>
                           <p style={{
-                            fontSize: '0.875rem',
-                            fontWeight: '500',
-                            color: '#1e293b',
-                            marginBottom: '0.25rem'
+                            fontSize: typography.fontSize.sm,
+                            fontWeight: typography.fontWeight.medium,
+                            color: colors.gray900,
+                            marginBottom: spacing.xs,
+                            fontFamily: typography.fontFamily
                           }}>
                             {product.name}
                           </p>
                           <p style={{
-                            fontSize: '0.75rem',
-                            color: '#64748b'
+                            fontSize: typography.fontSize.xs,
+                            color: colors.gray600,
+                            fontFamily: typography.fontFamily
                           }}>
                             ₹{product.price.toFixed(2)} × {item.quantity}
                           </p>
                         </div>
                         <p style={{
-                          fontSize: '0.875rem',
-                          fontWeight: '600',
-                          color: '#1e293b'
+                          fontSize: typography.fontSize.sm,
+                          fontWeight: typography.fontWeight.semibold,
+                          color: colors.gray900,
+                          fontFamily: typography.fontFamily
                         }}>
                           ₹{(product.price * item.quantity).toFixed(2)}
                         </p>
@@ -818,21 +847,23 @@ const Reports = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                padding: '1rem',
-                backgroundColor: '#f1f5f9',
-                borderRadius: '8px'
+                padding: spacing.md,
+                backgroundColor: colors.gray100,
+                borderRadius: borderRadius.md
               }}>
                 <p style={{
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  color: '#1e293b'
+                  fontSize: typography.fontSize.base,
+                  fontWeight: typography.fontWeight.semibold,
+                  color: colors.gray900,
+                  fontFamily: typography.fontFamily
                 }}>
-                  Total Amount
+                  💰 Total Amount
                 </p>
                 <p style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '700',
-                  color: '#1e293b'
+                  fontSize: typography.fontSize.xl,
+                  fontWeight: typography.fontWeight.bold,
+                  color: colors.gray900,
+                  fontFamily: typography.fontFamily
                 }}>
                   ₹{selectedTransaction.total_amount.toFixed(2)}
                 </p>

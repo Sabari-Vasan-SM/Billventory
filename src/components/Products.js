@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../supabaseClient';
+import { colors, spacing, borderRadius, shadows, typography } from '../styles/designSystem';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -135,8 +136,9 @@ const Products = () => {
     <div style={{ 
       maxWidth: '1400px', 
       margin: '0 auto', 
-      padding: '2rem',
-      minHeight: '100vh'
+      padding: 0,
+      minHeight: '100vh',
+      fontFamily: typography.fontFamily
     }}>
       {/* Header Section */}
       <motion.div
@@ -147,26 +149,24 @@ const Products = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '2.5rem',
+          marginBottom: spacing['2xl'],
           flexWrap: 'wrap',
-          gap: '1.5rem'
+          gap: spacing.lg
         }}
       >
         <div>
           <h1 style={{
-            fontSize: '2.25rem',
-            fontWeight: '700',
-            color: '#1a365d',
-            marginBottom: '0.5rem',
-            background: 'linear-gradient(90deg, #4f46e5, #06b6d4)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
+            fontSize: typography.fontSize['3xl'],
+            fontWeight: typography.fontWeight.extrabold,
+            color: colors.primary,
+            marginBottom: spacing.sm,
+            letterSpacing: '-0.5px'
           }}>
-            Product Dashboard
+            📦 Product Management
           </h1>
           <p style={{ 
-            color: '#64748b',
-            fontSize: '1rem',
+            color: colors.gray600,
+            fontSize: typography.fontSize.base,
             maxWidth: '600px'
           }}>
             Manage your product inventory with ease. Add, edit, or remove products as needed.
@@ -175,11 +175,11 @@ const Products = () => {
         
         <div style={{ 
           display: 'flex',
-          gap: '1rem',
+          gap: spacing.md,
           flexWrap: 'wrap'
         }}>
           <motion.button
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.02, boxShadow: shadows.lg }}
             whileTap={{ scale: 0.98 }}
             onClick={() => {
               setIsFormOpen(true);
@@ -187,23 +187,25 @@ const Products = () => {
               setNewProduct({ name: '', price: '', quantity: '', category: '' });
             }}
             style={{
-              backgroundColor: '#4f46e5',
-              color: 'white',
+              backgroundColor: colors.primary,
+              color: colors.white,
               border: 'none',
-              padding: '0.75rem 1.5rem',
-              borderRadius: '10px',
+              padding: `${spacing.md} ${spacing.xl}`,
+              borderRadius: borderRadius.md,
               cursor: 'pointer',
-              fontWeight: '600',
-              fontSize: '0.875rem',
+              fontWeight: typography.fontWeight.semibold,
+              fontSize: typography.fontSize.sm,
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 4px 6px -1px rgba(79, 70, 229, 0.3)',
-              whiteSpace: 'nowrap'
+              gap: spacing.sm,
+              boxShadow: shadows.md,
+              whiteSpace: 'nowrap',
+              transition: 'all 0.3s ease',
+              fontFamily: typography.fontFamily
             }}
           >
             <svg style={{ width: '18px', height: '18px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Add New Product
           </motion.button>
@@ -212,32 +214,44 @@ const Products = () => {
             whileHover={{ scale: 1.01 }}
             style={{
               position: 'relative',
-              minWidth: '250px'
+              minWidth: '280px'
             }}
           >
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search by name or category..."
               value={searchTerm}
               onChange={handleSearchChange}
               style={{
                 width: '100%',
-                padding: '0.75rem 2.5rem 0.75rem 1rem',
-                border: '1px solid #e2e8f0',
-                borderRadius: '10px',
-                fontSize: '0.875rem',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-                backgroundColor: '#f8fafc'
+                padding: `${spacing.md} ${spacing['2xl']} ${spacing.md} ${spacing.lg}`,
+                border: `2px solid ${colors.gray200}`,
+                borderRadius: borderRadius.md,
+                fontSize: typography.fontSize.sm,
+                boxShadow: shadows.sm,
+                backgroundColor: colors.white,
+                fontFamily: typography.fontFamily,
+                fontWeight: typography.fontWeight.medium,
+                transition: 'all 0.3s ease',
+                outline: 'none'
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = colors.primary;
+                e.target.style.boxShadow = `0 0 0 3px rgba(0, 31, 63, 0.1)`;
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = colors.gray200;
+                e.target.style.boxShadow = shadows.sm;
               }}
             />
             <svg style={{
               position: 'absolute',
-              right: '1rem',
+              right: spacing.lg,
               top: '50%',
               transform: 'translateY(-50%)',
               width: '18px',
               height: '18px',
-              color: '#94a3b8'
+              color: colors.gray400
             }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -254,12 +268,12 @@ const Products = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             style={{
-              backgroundColor: 'white',
-              borderRadius: '12px',
-              padding: '2rem',
-              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-              marginBottom: '2.5rem',
-              border: '1px solid #e2e8f0',
+              backgroundColor: colors.white,
+              borderRadius: borderRadius.xl,
+              padding: spacing.xl,
+              boxShadow: shadows.lg,
+              marginBottom: spacing['2xl'],
+              border: `1px solid ${colors.gray200}`,
               overflow: 'hidden'
             }}
           >
@@ -270,11 +284,12 @@ const Products = () => {
               marginBottom: '1.5rem'
             }}>
               <h2 style={{
-                fontSize: '1.5rem',
-                fontWeight: '600',
-                color: '#1e293b'
+                fontSize: typography.fontSize['2xl'],
+                fontWeight: typography.fontWeight.bold,
+                color: colors.gray900,
+                fontFamily: typography.fontFamily
               }}>
-                {editingId ? 'Edit Product' : 'Create New Product'}
+                {editingId ? '✏️ Edit Product' : '✨ Create New Product'}
               </h2>
               <button
                 onClick={() => {
@@ -310,30 +325,39 @@ const Products = () => {
                 <div key={field}>
                   <label style={{
                     display: 'block',
-                    fontSize: '0.875rem',
-                    color: '#475569',
-                    marginBottom: '0.5rem',
-                    fontWeight: '500'
+                    fontSize: typography.fontSize.sm,
+                    color: colors.gray700,
+                    marginBottom: spacing.sm,
+                    fontWeight: typography.fontWeight.semibold,
+                    fontFamily: typography.fontFamily
                   }}>
                     {field.charAt(0).toUpperCase() + field.slice(1)} {field === 'price' && '(₹)'}
                   </label>
-                  <motion.input
-                    whileFocus={{ 
-                      boxShadow: '0 0 0 2px rgba(79, 70, 229, 0.3)',
-                      borderColor: '#4f46e5'
-                    }}
+                  <input
                     type={field === 'price' || field === 'quantity' ? 'number' : 'text'}
                     name={field}
                     value={newProduct[field]}
                     onChange={handleInputChange}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = colors.primary;
+                      e.target.style.boxShadow = `0 0 0 3px rgba(0, 31, 63, 0.1)`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = colors.gray200;
+                      e.target.style.boxShadow = shadows.sm;
+                    }}
                     style={{
                       width: '100%',
-                      padding: '0.75rem 1rem',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
-                      fontSize: '0.875rem',
-                      transition: 'all 0.2s',
-                      backgroundColor: '#f8fafc'
+                      padding: `${spacing.md} ${spacing.lg}`,
+                      border: `2px solid ${colors.gray200}`,
+                      borderRadius: borderRadius.md,
+                      fontSize: typography.fontSize.sm,
+                      transition: 'all 0.2s ease',
+                      backgroundColor: colors.white,
+                      fontFamily: typography.fontFamily,
+                      fontWeight: typography.fontWeight.medium,
+                      outline: 'none',
+                      boxShadow: shadows.sm
                     }}
                     placeholder={`Enter ${field}`}
                   />
@@ -347,7 +371,7 @@ const Products = () => {
               justifyContent: 'flex-end'
             }}>
               <motion.button
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.02, backgroundColor: colors.gray200 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   setIsFormOpen(false);
@@ -355,36 +379,40 @@ const Products = () => {
                   setNewProduct({ name: '', price: '', quantity: '', category: '' });
                 }}
                 style={{
-                  backgroundColor: '#f1f5f9',
-                  color: '#475569',
+                  backgroundColor: colors.gray100,
+                  color: colors.gray700,
                   border: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
+                  padding: `${spacing.md} ${spacing.xl}`,
+                  borderRadius: borderRadius.md,
                   cursor: 'pointer',
-                  fontWeight: '600',
-                  fontSize: '0.875rem'
+                  fontWeight: typography.fontWeight.semibold,
+                  fontSize: typography.fontSize.sm,
+                  fontFamily: typography.fontFamily,
+                  transition: 'all 0.3s ease'
                 }}
               >
                 Cancel
               </motion.button>
               
               <motion.button
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.02, boxShadow: shadows.lg }}
                 whileTap={{ scale: 0.98 }}
                 onClick={editingId ? updateProduct : addProduct}
                 style={{
-                  backgroundColor: '#4f46e5',
-                  color: 'white',
+                  backgroundColor: colors.primary,
+                  color: colors.white,
                   border: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
+                  padding: `${spacing.md} ${spacing.xl}`,
+                  borderRadius: borderRadius.md,
                   cursor: 'pointer',
-                  fontWeight: '600',
-                  fontSize: '0.875rem',
-                  boxShadow: '0 4px 6px -1px rgba(79, 70, 229, 0.3)'
+                  fontWeight: typography.fontWeight.semibold,
+                  fontSize: typography.fontSize.sm,
+                  boxShadow: shadows.md,
+                  fontFamily: typography.fontFamily,
+                  transition: 'all 0.3s ease'
                 }}
               >
-                {editingId ? 'Update Product' : 'Create Product'}
+                {editingId ? '💾 Update Product' : '✨ Create Product'}
               </motion.button>
             </div>
           </motion.div>
@@ -404,18 +432,24 @@ const Products = () => {
           marginBottom: '1.5rem'
         }}>
           <h2 style={{
-            fontSize: '1.5rem',
-            fontWeight: '600',
-            color: '#1e293b'
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: typography.fontWeight.bold,
+            color: colors.gray900,
+            fontFamily: typography.fontFamily
           }}>
-            Product Inventory
+            📋 Product Inventory
           </h2>
-          <p style={{ 
-            color: '#64748b',
-            fontSize: '0.875rem'
+          <span style={{ 
+            backgroundColor: colors.gray100,
+            color: colors.gray700,
+            padding: `${spacing.xs} ${spacing.md}`,
+            borderRadius: borderRadius.full,
+            fontSize: typography.fontSize.xs,
+            fontWeight: typography.fontWeight.semibold,
+            fontFamily: typography.fontFamily
           }}>
-            {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
-          </p>
+            {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
+          </span>
         </div>
         
         {loading ? (
