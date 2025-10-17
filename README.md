@@ -1,17 +1,9 @@
-
+## Billventory
+An all-in-one digital solution that streamlines the retail experience by integrating inventory control, billing, and sales management into a single platform.
 
 <div align="center">
 	<img src="public/favicon.png" alt="Billventory Logo" width="120" />
   
-	<h1>Billventory <span>🧾</span></h1>
-	<b>A modern, minimal, and responsive inventory & billing management web app for retail stores.</b>
-	<br />
-	<b>Built with React, Supabase, and a custom design system.</b>
-	<br /><br />
-	<img src="https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=white" />
-	<img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ecf8e?logo=supabase&logoColor=white" />
-	<img src="https://img.shields.io/badge/Framer%20Motion-Animation-ea4fff?logo=framer&logoColor=white" />
-	<img src="https://img.shields.io/badge/Styled--Components-CSS-in-JS-db7093?logo=styled-components&logoColor=white" />
 </div>
 
 ---
