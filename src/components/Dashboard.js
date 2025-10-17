@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../contexts/AuthContext';
 
 const Dashboard = () => {
   const [isHoveringLogout, setIsHoveringLogout] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogout = () => {
-    navigate('/');
+    logout();
+    navigate('/', { replace: true });
   };
 
   const navItemVariants = {

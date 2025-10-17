@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -8,25 +9,30 @@ const Login = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login, isAuthenticated } = useAuth();
 
   // Replace this URL with your desired image
   const profileImageUrl = 'https://i.pinimg.com/736x/09/bb/63/09bb63dc6f5339c2d36aac99f01fda81.jpg';
+
+  // Redirect to dashboard if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
-    if (email === 'admin@123' && password === 'admin') {
-      setTimeout(() => {
-        setIsLoading(false);
-        navigate('/dashboard');
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        setIsLoading(false);
-        setError('Invalid credentials');
-      }, 1000);
+    try {
+      await login(email, password);
+      navigate('/dashboard', { replace: true });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
