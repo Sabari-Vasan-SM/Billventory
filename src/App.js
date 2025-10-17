@@ -35,7 +35,7 @@ function App() {
           justifyContent: 'center',
           alignItems: 'center',
           minHeight: '100vh',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: '#001f3f',
           position: 'fixed',
           top: 0,
           left: 0,

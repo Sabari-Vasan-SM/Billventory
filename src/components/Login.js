@@ -78,7 +78,7 @@ const Login = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: '#001f3f',
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         padding: '20px',
         position: 'relative',
@@ -160,12 +160,12 @@ const Login = () => {
                 width: '100px',
                 height: '100px',
                 borderRadius: '24px',
-                background: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`,
+                background: '#001f3f',
                 margin: '0 auto 24px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 10px 30px rgba(102, 126, 234, 0.4)',
+                boxShadow: '0 10px 30px rgba(0, 31, 63, 0.4)',
                 padding: '4px',
                 position: 'relative',
                 overflow: 'hidden'
@@ -236,7 +236,7 @@ const Login = () => {
                 exit={{ opacity: 0, height: 0, marginBottom: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  background: 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)',
+                  background: '#fee2e2',
                   color: '#dc2626',
                   padding: '16px',
                   borderRadius: '16px',
@@ -275,7 +275,7 @@ const Login = () => {
                 animate={{
                   y: focusedField === 'email' || email ? -24 : 0,
                   scale: focusedField === 'email' || email ? 0.85 : 1,
-                  color: focusedField === 'email' ? '#667eea' : '#718096'
+                  color: focusedField === 'email' ? '#001f3f' : '#718096'
                 }}
                 transition={{ duration: 0.2 }}
                 style={{
@@ -310,7 +310,7 @@ const Login = () => {
                   style={{
                     width: '100%',
                     padding: '18px 20px',
-                    border: `2px solid ${focusedField === 'email' ? '#667eea' : '#e2e8f0'}`,
+                    border: `2px solid ${focusedField === 'email' ? '#001f3f' : '#e2e8f0'}`,
                     borderRadius: '16px',
                     fontSize: '15px',
                     backgroundColor: '#ffffff',
@@ -318,7 +318,7 @@ const Login = () => {
                     outline: 'none',
                     boxSizing: 'border-box',
                     boxShadow: focusedField === 'email' 
-                      ? '0 8px 20px rgba(102, 126, 234, 0.15)' 
+                      ? '0 8px 20px rgba(0, 31, 63, 0.15)' 
                       : '0 2px 8px rgba(0, 0, 0, 0.05)',
                     fontWeight: '500'
                   }}
@@ -335,7 +335,7 @@ const Login = () => {
                 animate={{
                   y: focusedField === 'password' || password ? -24 : 0,
                   scale: focusedField === 'password' || password ? 0.85 : 1,
-                  color: focusedField === 'password' ? '#667eea' : '#718096'
+                  color: focusedField === 'password' ? '#001f3f' : '#718096'
                 }}
                 transition={{ duration: 0.2 }}
                 style={{
@@ -370,7 +370,7 @@ const Login = () => {
                   style={{
                     width: '100%',
                     padding: '18px 20px',
-                    border: `2px solid ${focusedField === 'password' ? '#667eea' : '#e2e8f0'}`,
+                    border: `2px solid ${focusedField === 'password' ? '#001f3f' : '#e2e8f0'}`,
                     borderRadius: '16px',
                     fontSize: '15px',
                     backgroundColor: '#ffffff',
@@ -378,7 +378,7 @@ const Login = () => {
                     outline: 'none',
                     boxSizing: 'border-box',
                     boxShadow: focusedField === 'password' 
-                      ? '0 8px 20px rgba(102, 126, 234, 0.15)' 
+                      ? '0 8px 20px rgba(0, 31, 63, 0.15)' 
                       : '0 2px 8px rgba(0, 0, 0, 0.05)',
                     fontWeight: '500'
                   }}
@@ -392,7 +392,7 @@ const Login = () => {
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.02,
-                boxShadow: '0 12px 30px rgba(102, 126, 234, 0.4)'
+                boxShadow: '0 12px 30px rgba(0, 31, 63, 0.4)'
               }}
               whileTap={{ scale: 0.98 }}
               type="submit"
@@ -401,8 +401,8 @@ const Login = () => {
                 width: '100%',
                 padding: '18px',
                 background: isLoading 
-                  ? 'linear-gradient(135deg, #a0aec0 0%, #718096 100%)'
-                  : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  ? '#718096'
+                  : '#001f3f',
                 color: 'white',
                 border: 'none',
                 borderRadius: '16px',
@@ -414,7 +414,7 @@ const Login = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: '12px',
-                boxShadow: '0 8px 20px rgba(102, 126, 234, 0.3)',
+                boxShadow: '0 8px 20px rgba(0, 31, 63, 0.3)',
                 position: 'relative',
                 overflow: 'hidden'
               }}
