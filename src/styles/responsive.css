@@ -18,6 +18,7 @@ input, select, textarea {
     padding: 1rem !important;
     gap: 0.75rem !important;
     justify-content: space-between !important;
+    position: relative;
   }
 
   .dashboard-nav-list {
@@ -32,26 +33,54 @@ input, select, textarea {
     gap: 0.5rem !important;
     padding: 1rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    margin-top: 0.5rem;
+    border-radius: 0 0 12px 12px;
   }
 
   .dashboard-nav-list.mobile-open {
     display: flex !important;
   }
 
+  .dashboard-nav-list li {
+    width: 100%;
+  }
+
+  .dashboard-nav-list li a {
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+
   .dashboard-brand {
-    flex: 1;
+    flex: 0 1 auto;
+  }
+
+  .dashboard-brand h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .dashboard-brand p {
+    font-size: 0.6rem !important;
   }
 
   .dashboard-user-section {
+    display: none !important;
+  }
+
+  .dashboard-user-section.mobile-open {
+    display: flex !important;
     flex-direction: column !important;
-    gap: 0.5rem !important;
+    gap: 0.75rem !important;
     width: 100%;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 1rem);
     left: 0;
     right: 0;
     background: #001f3f;
     padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    border-radius: 0 0 12px 12px;
   }
 
   .show-mobile {
@@ -172,4 +201,14 @@ input, select, textarea {
 
 .show-mobile {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .show-mobile {
+    display: block !important;
+  }
 }

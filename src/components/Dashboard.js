@@ -140,12 +140,13 @@ const Dashboard = () => {
             </svg>
           </motion.button>
 
-          <ul className="dashboard-nav-list" style={{ 
+          <ul className={`dashboard-nav-list ${isMobileMenuOpen ? 'mobile-open' : ''}`} style={{ 
             display: 'flex', 
             gap: '0.75rem',
             margin: 0,
             padding: 0,
-            alignItems: 'center'
+            alignItems: 'center',
+            listStyle: 'none'
           }}>
             <motion.li
               whileHover="hover"
@@ -155,6 +156,7 @@ const Dashboard = () => {
             >
               <Link
                 to="/dashboard"
+                onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -199,6 +201,7 @@ const Dashboard = () => {
             >
               <Link
                 to="/dashboard/billing"
+                onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -243,6 +246,7 @@ const Dashboard = () => {
             >
               <Link
                 to="/dashboard/reports"
+                onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -287,6 +291,7 @@ const Dashboard = () => {
             >
               <Link
                 to="/dashboard/online-orders"
+                onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -322,11 +327,83 @@ const Dashboard = () => {
                 <span>Online Orders</span>
               </Link>
             </motion.li>
+
+            {/* Mobile-only user and logout section inside menu */}
+            <motion.li 
+              className="show-mobile"
+              style={{ 
+                listStyle: 'none', 
+                display: 'none',
+                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                paddingTop: '0.75rem',
+                marginTop: '0.5rem'
+              }}
+            >
+              <div style={{ 
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                padding: '0.75rem 1rem',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.1)',
+                marginBottom: '0.75rem'
+              }}>
+                <div style={{
+                  width: '2.5rem',
+                  height: '2.5rem',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+                  color: 'white',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)'
+                }}>
+                  A
+                </div>
+                <div>
+                  <span style={{ fontWeight: 600, fontSize: '0.95rem', display: 'block' }}>Admin</span>
+                  <span style={{ fontSize: '0.7rem', color: '#94a3b8', display: 'block' }}>Administrator</span>
+                </div>
+              </div>
+              <motion.button
+                onClick={handleLogout}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem 1.5rem',
+                  backgroundColor: '#dc2626',
+                  color: 'white',
+                  borderRadius: '12px',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '0.95rem',
+                  boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)',
+                  gap: '0.5rem'
+                }}
+              >
+                <svg 
+                  style={{ width: '18px', height: '18px' }} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+              </motion.button>
+            </motion.li>
           </ul>
         </div>
 
-        {/* Right side - User and Logout */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+        {/* Right side - User and Logout (Desktop only) */}
+        <div className="dashboard-user-section hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
           <motion.div 
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ duration: 0.2 }}
