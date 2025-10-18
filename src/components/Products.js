@@ -317,7 +317,7 @@ const Products = () => {
             
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))', 
               gap: '1.5rem',
               marginBottom: '1.5rem'
             }}>
@@ -562,9 +562,9 @@ const Products = () => {
             )}
           </motion.div>
         ) : (
-          <div style={{
+          <div className="products-grid" style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
             gap: '1.5rem'
           }}>
             <AnimatePresence>

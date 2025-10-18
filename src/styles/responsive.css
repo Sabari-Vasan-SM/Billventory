@@ -1,0 +1,175 @@
+/* Mobile Responsive Styles for Billventory */
+
+/* Prevent zoom on input focus (iOS) */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Base mobile styles */
+@media (max-width: 768px) {
+  /* Global padding adjustments */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Dashboard Navigation */
+  .dashboard-nav {
+    flex-direction: row !important;
+    padding: 1rem !important;
+    gap: 0.75rem !important;
+    justify-content: space-between !important;
+  }
+
+  .dashboard-nav-list {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #001f3f;
+    flex-direction: column !important;
+    width: 100%;
+    gap: 0.5rem !important;
+    padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .dashboard-nav-list.mobile-open {
+    display: flex !important;
+  }
+
+  .dashboard-brand {
+    flex: 1;
+  }
+
+  .dashboard-user-section {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #001f3f;
+    padding: 1rem;
+  }
+
+  .show-mobile {
+    display: flex !important;
+  }
+
+  /* Billing Grid */
+  .billing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Reports Statistics */
+  .reports-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Online Orders Grid */
+  .orders-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Form Inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  /* Modal Padding */
+  .modal-content {
+    padding: 1.5rem !important;
+    max-height: 85vh !important;
+  }
+
+  /* Table Scroll */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Cart Table */
+  .cart-table {
+    font-size: 0.875rem !important;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 0.5rem !important;
+  }
+
+  /* Button Stacks */
+  .button-group {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Hide on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Show only on mobile */
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .products-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .billing-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+  }
+
+  .reports-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Utility classes */
+.hide-mobile {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}

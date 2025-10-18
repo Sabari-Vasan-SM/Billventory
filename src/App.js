@@ -10,6 +10,7 @@ import Billing from './components/Billing';
 import Reports from './components/Reports';
 import OnlineOrders from './components/OnlineOrders';
 import Loader from './components/Loader';
+import './styles/responsive.css';
 
 
 function App() {

@@ -6,6 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 const Dashboard = () => {
   const [isHoveringLogout, setIsHoveringLogout] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useAuth();
@@ -67,6 +68,7 @@ const Dashboard = () => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
+        className="dashboard-nav"
         style={{
           position: 'sticky',
           top: 0,
@@ -74,21 +76,24 @@ const Dashboard = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '1rem 2rem',
+          padding: '1rem clamp(1rem, 3vw, 2rem)',
           background: '#001f3f',
           color: 'white',
           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-          backdropFilter: 'blur(10px)'
+          backdropFilter: 'blur(10px)',
+          flexWrap: 'wrap',
+          gap: '1rem'
         }}
       >
         {/* Left side - Brand and Navigation */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 3vw, 3rem)', flex: '1', flexWrap: 'wrap' }}>
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
+            className="dashboard-brand"
           >
             <h2 style={{
-              fontSize: '1.5rem',
+              fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
               fontWeight: 800,
               lineHeight: '1.75rem',
               margin: 0,
@@ -100,7 +105,7 @@ const Dashboard = () => {
               Billventory
             </h2>
             <p style={{
-              fontSize: '0.7rem',
+              fontSize: 'clamp(0.6rem, 1.5vw, 0.7rem)',
               color: '#94a3b8',
               margin: 0,
               marginTop: '2px',
@@ -110,7 +115,32 @@ const Dashboard = () => {
             </p>
           </motion.div>
 
-          <ul style={{ 
+          {/* Mobile Menu Button */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="show-mobile"
+            style={{
+              display: 'none',
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '2px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '8px',
+              padding: '0.5rem',
+              cursor: 'pointer',
+              color: 'white',
+              marginLeft: 'auto'
+            }}
+          >
+            <svg style={{ width: '24px', height: '24px' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </motion.button>
+
+          <ul className="dashboard-nav-list" style={{ 
             display: 'flex', 
             gap: '0.75rem',
             margin: 0,

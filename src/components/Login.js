@@ -155,7 +155,7 @@ const Login = () => {
           backdropFilter: 'blur(20px)',
           borderRadius: '32px',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)',
-          padding: '48px 40px',
+          padding: 'clamp(24px, 5vw, 48px) clamp(20px, 4vw, 40px)',
           width: '100%',
           maxWidth: '440px',
           position: 'relative'
@@ -574,9 +574,9 @@ const Login = () => {
               onClick={(e) => e.stopPropagation()}
               style={{
                 background: 'white',
-                borderRadius: '24px',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
                 boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
-                padding: '40px',
+                padding: 'clamp(20px, 4vw, 40px)',
                 width: '100%',
                 maxWidth: '560px',
                 maxHeight: '90vh',

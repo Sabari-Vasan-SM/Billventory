@@ -293,7 +293,7 @@ const Billing = () => {
         💳 Billing System
       </motion.h1>
       
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: spacing.lg }}>
+      <div className="billing-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: spacing.lg }}>
         {/* Product Selection */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
